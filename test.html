@@ -28,19 +28,16 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: center;
-      padding: 40px 20px;
       text-align: left;
-      flex: 1; /* centrering på desktop */
+      padding: 40px 20px;
+      max-width: 600px;
+      margin: 0 auto;
     }
 
     .logo {
       width: 200px;
       max-width: 50%;
       margin-bottom: 30px;
-      display: block;
-      margin-left: auto;
-      margin-right: auto;
       opacity: 0;
       animation: fadeIn 1.5s forwards;
     }
@@ -48,7 +45,7 @@
     .intro-text {
       font-size: 1rem;
       line-height: 1.5;
-      max-width: 600px;
+      margin-bottom: 40px;
     }
 
     footer {
@@ -94,19 +91,21 @@
       to { opacity: 1; }
     }
 
-    /* Mobilanpassning */
     @media (max-width: 600px) {
-      .container {
-        flex: none;       /* slutar fylla hela höjden */
-        padding: 20px 15px;
-      }
       .logo {
-        width: 120px;
+        width: 150px;
         margin-bottom: 20px;
       }
       .social-icons svg {
         width: 18px;
         height: 18px;
+      }
+    }
+
+    @media (max-height: 700px) {
+      /* Anpassa layout för korta skärmar */
+      .container {
+        padding: 20px 15px;
       }
     }
   </style>
@@ -119,7 +118,7 @@
       gobo.ws erbjuder interaktiva installationer och skräddarsydda lösningar för ljusstyrning.<br>
       Integration mellan DMX-baserade system som CueServer och IoT-lösningar som Hue och Shelly – för att nämna några.<br>
       Arbetar även med mjukvara som Node-RED samt lösningar för Raspberry Pi.<br>
-      Oavsett om det gäller event, museer, teatrar, kontor eller hem.<br><br>
+      Oavsett om det gäller event, museer, teatrar, kontor eller hem.
     </div>
   </div>
 

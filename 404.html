@@ -1,1 +1,52 @@
-404 :(
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>404 - gobo.ws</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+      background-color: #242324;
+      color: oklch(0.705 0.015 286.067);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 6rem;
+      margin: 0;
+      opacity: 0;
+      animation: fadeIn 1.5s forwards;
+    }
+
+    p {
+      font-size: 1.25rem;
+      margin: 20px 0 0;
+    }
+
+    a {
+      color: oklch(0.705 0.015 286.067);
+      text-decoration: none;
+      border-bottom: 1px dotted;
+    }
+
+    a:hover {
+      color: oklch(0.8 0.03 286.067);
+    }
+
+    @keyframes fadeIn {
+      to { opacity: 1; }
+    }
+  </style>
+</head>
+<body>
+  <h1>404 :(</h1>
+  <p><a href="/">Tillbaka till startsidan</a></p>
+</body>
+</html>

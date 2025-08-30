@@ -7,15 +7,11 @@
   <meta name="description" content="gobo.ws erbjuder interaktiva installationer och skräddarsydda lösningar för ljusstyrning">
   <meta name="keywords" content="ljusstyrning">
   <meta name="author" content="Johan Nilsson">
-  <meta property="og:title" content="gobo.ws">
-  <meta property="og:description" content="gobo.ws erbjuder interaktiva installationer och skräddarsydda lösningar för ljusstyrning">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://gobo.ws/">
-  <meta property="og:image" content="logo.svg">
   <style>
     body {
       margin: 0;
-      font-family: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+      font-family: ui-sans-serif, system-ui, sans-serif,
+        "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
       font-size: 16px;
       background-color: #242324;
       color: oklch(0.705 0.015 286.067);
@@ -24,14 +20,13 @@
       min-height: 100vh;
     }
 
+    /* Hela innehållet */
     .container {
       display: flex;
       flex-direction: column;
       align-items: center;
-      text-align: left;
       padding: 40px 20px;
-      max-width: 600px;
-      margin: 0 auto;
+      text-align: left;
     }
 
     .logo {
@@ -45,13 +40,12 @@
     .intro-text {
       font-size: 1rem;
       line-height: 1.5;
-      margin-bottom: 40px;
+      max-width: 600px;
     }
 
     footer {
       background-color: #1c1c1c;
       padding: 12px 20px;
-      text-align: center;
       font-size: 0.9rem;
       color: #888;
       display: flex;
@@ -87,26 +81,20 @@
       fill: oklch(0.8 0.03 286.067);
     }
 
-    @keyframes fadeIn {
-      to { opacity: 1; }
-    }
+    @keyframes fadeIn { to { opacity: 1; } }
 
-    @media (max-width: 600px) {
-      .logo {
-        width: 150px;
-        margin-bottom: 20px;
-      }
-      .social-icons svg {
-        width: 18px;
-        height: 18px;
-      }
-    }
-
-    @media (max-height: 700px) {
-      /* Anpassa layout för korta skärmar */
+    /* Centera innehåll på större skärmar */
+    @media (min-height: 600px) {
       .container {
-        padding: 20px 15px;
+        flex: 1;
+        justify-content: center;
       }
+    }
+
+    /* Mobilanpassning */
+    @media (max-width: 600px) {
+      .logo { width: 150px; }
+      .social-icons svg { width: 18px; height: 18px; }
     }
   </style>
 </head>
@@ -118,7 +106,7 @@
       gobo.ws erbjuder interaktiva installationer och skräddarsydda lösningar för ljusstyrning.<br>
       Integration mellan DMX-baserade system som CueServer och IoT-lösningar som Hue och Shelly – för att nämna några.<br>
       Arbetar även med mjukvara som Node-RED samt lösningar för Raspberry Pi.<br>
-      Oavsett om det gäller event, museer, teatrar, kontor eller hem.
+      Oavsett om det gäller event, museer, teatrar, kontor eller hem.<br><br>
     </div>
   </div>
 

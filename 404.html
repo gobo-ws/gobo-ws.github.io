@@ -5,8 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>404 - gobo.ws</title>
   <style>
-    body {
+    html, body {
       margin: 0;
+      padding: 0;
+      height: 100%;
       font-family: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
       background-color: #242324;
       color: oklch(0.705 0.015 286.067);
@@ -14,8 +16,8 @@
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      min-height: 100vh;
       text-align: center;
+      overflow: hidden;
     }
 
     h1 {
@@ -27,7 +29,7 @@
 
     p {
       font-size: 1.25rem;
-      margin: 20px 0 0;
+      margin: 0.5rem 0 0;
     }
 
     a {
@@ -42,6 +44,15 @@
 
     @keyframes fadeIn {
       to { opacity: 1; }
+    }
+
+    @media (max-width: 400px) {
+      h1 {
+        font-size: 4rem;
+      }
+      p {
+        font-size: 1rem;
+      }
     }
   </style>
 </head>

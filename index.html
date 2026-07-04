@@ -6,17 +6,15 @@
   <title>gobo.ws – Norrköping, Sweden</title>
 
   <meta name="description" content="gobo.ws creates interactive light installations and custom technical solutions for DMX-based environments.">
-  <meta name="keywords" content="DMX, lighting control, Node-RED, interactive light, Hue, Shelly">
   <meta name="author" content="Johan Nilsson">
 
-  <!-- Open Graph -->
   <meta property="og:title" content="gobo.ws">
   <meta property="og:description" content="Interactive light installations and custom DMX integrations by gobo.ws.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://gobo.ws/">
-  <meta property="og:image" content="gfx/logo.svg">
 
   <link rel="canonical" href="https://gobo.ws/">
+  <link rel="icon" href="data:,">
 
   <style>
     html,
@@ -24,13 +22,29 @@
       margin: 0;
       padding: 0;
       height: 100%;
-      font-family: ui-sans-serif, system-ui, sans-serif,
-        "Apple Color Emoji", "Segoe UI Emoji",
-        "Segoe UI Symbol", "Noto Color Emoji";
+      font-family:
+        ui-sans-serif,
+        system-ui,
+        sans-serif,
+        "Apple Color Emoji",
+        "Segoe UI Emoji",
+        "Segoe UI Symbol",
+        "Noto Color Emoji";
       font-size: 16px;
       background-color: #242324;
-      color: #b7b4c2; /* fallback */
       color: oklch(0.705 0.015 286.067);
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+      border-bottom: 1px solid transparent;
+      transition: border-color 0.25s ease, color 0.25s ease;
+    }
+
+    a:hover {
+      border-bottom-color: oklch(0.8 0.03 286.067);
+      color: oklch(0.8 0.03 286.067);
     }
 
     .page-wrapper {
@@ -45,10 +59,10 @@
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      padding: 40px 20px;
-      text-align: left;
       max-width: 600px;
       margin: 0 auto;
+      padding: 40px 20px;
+      text-align: left;
     }
 
     .logo {
@@ -61,8 +75,80 @@
     }
 
     .intro-text {
-      font-size: 1rem;
+      width: 100%;
       line-height: 1.5;
+    }
+
+    .intro-text ul {
+      list-style: none;
+      padding-left: 0;
+      margin-top: 20px;
+    }
+
+    .intro-text li {
+      margin-bottom: 6px;
+    }
+
+    .intro-text li::before {
+      content: "– ";
+      opacity: 0.7;
+    }
+
+    .project-link {
+      cursor: zoom-in;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .project-link svg {
+      width: 14px;
+      height: 14px;
+      opacity: 0.6;
+      fill: currentColor;
+      flex-shrink: 0;
+    }
+
+    .external-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 3px;
+    }
+
+    .external-link svg {
+      width: 11px;
+      height: 11px;
+      opacity: 0.55;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      flex-shrink: 0;
+    }
+
+    dialog {
+      border: none;
+      padding: 0;
+      background: transparent;
+      max-width: none;
+    }
+
+    dialog::backdrop {
+      background: rgba(0, 0, 0, 0.85);
+      backdrop-filter: blur(2px);
+    }
+
+    .dialog-image {
+      display: block;
+      max-width: 90vw;
+      max-height: 90vh;
+      width: auto;
+      height: auto;
+      border-radius: 6px;
+      box-shadow:
+        0 0 40px rgba(0, 0, 0, 0.5),
+        0 0 120px rgba(0, 0, 0, 0.4);
     }
 
     footer {
@@ -79,17 +165,6 @@
       gap: 8px;
     }
 
-    footer a {
-      color: #b7b4c2; /* fallback */
-      color: oklch(0.705 0.015 286.067);
-      text-decoration: none;
-      margin: 0 5px;
-    }
-
-    footer a:hover {
-      text-decoration: underline;
-    }
-
     .social-icons {
       display: flex;
       gap: 10px;
@@ -98,14 +173,13 @@
     .social-icons svg {
       width: 20px;
       height: 20px;
-      fill: #b7b4c2; /* fallback */
       fill: oklch(0.705 0.015 286.067);
-      transition: fill 0.3s;
+      transition: fill 0.3s ease, transform 0.2s ease;
     }
 
     .social-icons svg:hover {
-      fill: #d2cfe0; /* fallback */
       fill: oklch(0.8 0.03 286.067);
+      transform: translateY(-1px);
     }
 
     @keyframes fadeIn {
@@ -118,55 +192,129 @@
       .logo {
         width: 150px;
       }
-
-      .social-icons svg {
-        width: 18px;
-        height: 18px;
-      }
     }
   </style>
 </head>
 
 <body>
-  <div class="page-wrapper">
-    <main class="content">
-      <img src="gfx/logo.svg" alt="gobo.ws logo" class="logo">
 
-      <div class="intro-text">
-<p>Interactive light installations and technical solutions for DMX‑based environments.</p>
-<p>Based in Norrköping, Sweden, gobo.ws works as a freelance developer creating custom integrations between DMX and modern lighting systems, along with robust Node‑RED flows for smart and responsive control.</p>
-<p>Contributed an interactive light artwork to Vinterljus 2025 in Linköping.</p>
+<div class="page-wrapper">
 
-      </div>
-    </main>
+  <main class="content">
 
-    <footer>
-      <span>
-        &copy; 2026 gobo.ws · Johan Nilsson ·
-        <a href="mailto:jn@gobo.ws">jn@gobo.ws</a> ·
-        Registered for F‑tax in Sweden
-      </span>
+    <img class="logo" src="gfx/logo.svg" alt="gobo.ws logo" width="200" height="53">
 
-      <div class="social-icons">
-        <a href="https://github.com/gobo-ws"
-           target="_blank"
-           rel="noopener noreferrer"
-           aria-label="GitHub">
-          <svg viewBox="0 0 24 24" aria-hidden="true">
-            <path d="M12 0C5.37 0 0 5.37 0 12a12 12 0 008.21 11.38c.6.11.82-.26.82-.58 0-.28-.01-1.04-.02-2.04-3.34.72-4.04-1.61-4.04-1.61-.55-1.39-1.33-1.76-1.33-1.76-1.09-.74.08-.73.08-.73 1.21.08 1.84 1.24 1.84 1.24 1.07 1.83 2.81 1.3 3.49.99.11-.77.42-1.3.76-1.6-2.66-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.23-3.22 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 016 0c2.29-1.55 3.3-1.23 3.3-1.23.77.84 1.23 1.91 1.23 3.22 0 4.61-2.81 5.63-5.48 5.92.43.37.82 1.1.82 2.21 0 1.6-.01 2.88-.01 3.27 0 .32.22.69.82.58A12 12 0 0024 12c0-6.63-5.37-12-12-12z"/>
-          </svg>
-        </a>
+    <div class="intro-text">
 
-        <a href="https://www.instagram.com/gobo_ws"
-           target="_blank"
-           rel="noopener noreferrer"
-           aria-label="Instagram">
-          <svg viewBox="0 0 24 24" aria-hidden="true">
-            <path d="M7.75 2h8.5A5.75 5.75 0 0122 7.75v8.5A5.75 5.75 0 0116.25 22h-8.5A5.75 5.75 0 012 16.25v-8.5A5.75 5.75 0 017.75 2zm0 1.5A4.25 4.25 0 003.5 7.75v8.5A4.25 4.25 0 007.75 20.5h8.5a4.25 4.25 0 004.25-4.25v-8.5A4.25 4.25 0 0016.25 3.5h-8.5zm8.75 2a1 1 0 110 2 1 1 0 010-2zm-4.25 1.5a5.25 5.25 0 110 10.5 5.25 5.25 0 010-10.5zm0 1.5a3.75 3.75 0 100 7.5 3.75 3.75 0 000-7.5z"/>
-          </svg>
-        </a>
-      </div>
-    </footer>
-  </div>
+      <p>
+        Interactive light installations and technical solutions for
+        DMX‑based environments.
+      </p>
+
+      <p>
+        Based in Norrköping, Sweden, gobo.ws is a freelance practice focused
+        on custom integrations between DMX and modern lighting systems,
+        along with robust Node‑RED flows for responsive control.
+      </p>
+
+      <ul>
+        <li>
+          Awarded a 2026 grant from the Bertil &amp; Britt Svensson
+          Foundation for Lighting Technology for
+          <a href="https://belysningsstiftelsen.se/projekt/johan-nilsson-stad-i-puls-datadriven-ljusvisualisering"
+             target="_blank"
+             rel="noopener noreferrer"
+             class="external-link">
+            Stad i puls
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M7 17L17 7M17 7H9M17 7v8"/>
+            </svg>
+          </a>, a data‑driven light visualization project
+        </li>
+
+        <li>
+          Contributed an interactive light artwork to
+          <a href="gfx/Show_Me_Colours_Vinterljus_2025.jpg"
+             id="vinterljus-link"
+             class="project-link"
+             aria-haspopup="dialog">
+            Vinterljus 2025
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M9 3a1 1 0 00-.8.4L6.75 5H4a2 2 0 00-2 2v11a2 2 0 002 2h16a2 2 0 002-2V7a2 2 0 00-2-2h-2.75L15.8 3.4A1 1 0 0015 3H9zm3 5a5 5 0 110 10 5 5 0 010-10zm0 2a3 3 0 100 6 3 3 0 000-6z"/>
+            </svg>
+          </a>
+          in Linköping
+        </li>
+      </ul>
+
+    </div>
+
+  </main>
+
+  <footer>
+
+    <span>
+      &copy; 2026 gobo.ws · Johan Nilsson ·
+      <a href="mailto:jn@gobo.ws">jn@gobo.ws</a> ·
+      Registered for F‑tax in Sweden
+    </span>
+
+    <div class="social-icons">
+
+      <a href="https://github.com/gobo-ws"
+         target="_blank"
+         rel="noopener noreferrer"
+         aria-label="GitHub">
+
+        <svg viewBox="0 0 24 24">
+          <path d="M12 0C5.37 0 0 5.37 0 12a12 12 0 008.21 11.38c.6.11.82-.26.82-.58 0-.28-.01-1.04-.02-2.04-3.34.72-4.04-1.61-4.04-1.61-.55-1.39-1.33-1.76-1.33-1.76-1.09-.74.08-.73.08-.73 1.21.08 1.84 1.24 1.84 1.24 1.07 1.83 2.81 1.3 3.49.99.11-.77.42-1.3.76-1.6-2.66-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.23-3.22 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 016 0c2.29-1.55 3.3-1.23 3.3-1.23.77.84 1.23 1.91 1.23 3.22 0 4.61-2.81 5.63-5.48 5.92.43.37.82 1.1.82 2.21 0 1.6-.01 2.88-.01 3.27 0 .32.22.69.82.58A12 12 0 0024 12c0-6.63-5.37-12-12-12z"/>
+        </svg>
+
+      </a>
+
+      <a href="https://www.instagram.com/gobo_ws"
+         target="_blank"
+         rel="noopener noreferrer"
+         aria-label="Instagram">
+
+        <svg viewBox="0 0 24 24">
+          <path d="M7.75 2h8.5A5.75 5.75 0 0122 7.75v8.5A5.75 5.75 0 0116.25 22h-8.5A5.75 5.75 0 012 16.25v-8.5A5.75 5.75 0 017.75 2zm0 1.5A4.25 4.25 0 003.5 7.75v8.5A4.25 4.25 0 007.75 20.5h8.5a4.25 4.25 0 004.25-4.25v-8.5A4.25 4.25 0 0016.25 3.5h-8.5zm8.75 2a1 1 0 110 2 1 1 0 010-2zm-4.25 1.5a5.25 5.25 0 110 10.5 5.25 5.25 0 010-10.5zm0 1.5a3.75 3.75 0 100 7.5 3.75 3.75 0 000-7.5z"/>
+        </svg>
+
+      </a>
+
+    </div>
+
+  </footer>
+
+</div>
+
+<dialog id="image-dialog" aria-label="Vinterljus 2025">
+  <img class="dialog-image" src="gfx/Show_Me_Colours_Vinterljus_2025.jpg" alt="Interactive light artwork at Vinterljus 2025, Linköping" loading="lazy" decoding="async">
+</dialog>
+
+<script>
+  const dialog = document.getElementById('image-dialog');
+  const trigger = document.getElementById('vinterljus-link');
+
+  trigger.addEventListener('click', function (e) {
+    e.preventDefault();
+    dialog.showModal();
+  });
+
+  dialog.addEventListener('click', function (e) {
+    const rect = dialog.getBoundingClientRect();
+
+    if (
+      e.clientX < rect.left ||
+      e.clientX > rect.right ||
+      e.clientY < rect.top ||
+      e.clientY > rect.bottom
+    ) {
+      dialog.close();
+    }
+  });
+</script>
+
 </body>
 </html>

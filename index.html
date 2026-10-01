@@ -7,6 +7,7 @@
 
   <meta name="description" content="gobo.ws creates interactive light installations and custom technical solutions for DMX-based environments.">
   <meta name="author" content="Johan Nilsson">
+  <meta name="theme-color" content="#0e0d0e">
 
   <meta property="og:title" content="gobo.ws">
   <meta property="og:description" content="Interactive light installations and custom DMX integrations by gobo.ws.">
@@ -14,37 +15,72 @@
   <meta property="og:url" content="https://gobo.ws/">
 
   <link rel="canonical" href="https://gobo.ws/">
-  <link rel="icon" href="data:,">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2016%2016'%3E%3Ccircle%20cx='8'%20cy='8'%20r='7'%20fill='%23ff5a3c'/%3E%3C/svg%3E">
+
+  <link rel="preload" href="fonts/sora-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
 
   <style>
+    @font-face {
+      font-family: "Sora";
+      src: url("fonts/sora-latin-wght-normal.woff2") format("woff2");
+      font-weight: 100 800;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    :root {
+      --hue: 12;
+      --x: 50vw;
+      --y: 40vh;
+      --accent: hsl(var(--hue) 85% 60%);
+      --bg: #0e0d0e;
+      --text: #d6d3d8;
+      --muted: #8d8a90;
+    }
+
     html,
     body {
       margin: 0;
       padding: 0;
       height: 100%;
-      font-family:
-        ui-sans-serif,
-        system-ui,
-        sans-serif,
-        "Apple Color Emoji",
-        "Segoe UI Emoji",
-        "Segoe UI Symbol",
-        "Noto Color Emoji";
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: "Sora", ui-sans-serif, system-ui, sans-serif;
       font-size: 16px;
-      background-color: #242324;
-      color: oklch(0.705 0.015 286.067);
+    }
+
+    /* Spotlight: darkens everything except a soft circle around the light */
+    body::after {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 10;
+      background: radial-gradient(
+        circle 340px at var(--x) var(--y),
+        transparent 0,
+        rgba(0, 0, 0, 0.12) 45%,
+        rgba(0, 0, 0, 0.5) 100%
+      );
+    }
+
+    @media (hover: none) {
+      body::after { opacity: 0.6; }
     }
 
     a {
       color: inherit;
       text-decoration: none;
-      border-bottom: 1px solid transparent;
-      transition: border-color 0.25s ease, color 0.25s ease;
+      transition: color 0.25s ease;
     }
 
-    a:hover {
-      border-bottom-color: oklch(0.8 0.03 286.067);
-      color: oklch(0.8 0.03 286.067);
+    a:hover,
+    a:focus-visible {
+      color: var(--accent);
+    }
+
+    a:focus-visible {
+      outline: none;
     }
 
     .page-wrapper {
@@ -58,40 +94,100 @@
       display: flex;
       flex-direction: column;
       justify-content: center;
-      align-items: center;
-      max-width: 600px;
+      align-items: stretch;
+      width: 100%;
+      max-width: 620px;
+      box-sizing: border-box;
       margin: 0 auto;
-      padding: 40px 20px;
-      text-align: left;
+      padding: 48px 20px;
     }
 
-    .logo {
+    /* Logo with a live dot laid over the static one */
+    .logo-wrap {
+      position: relative;
+      align-self: center;
       width: 200px;
       max-width: 50%;
-      margin-bottom: 30px;
-      display: block;
+      margin-bottom: 36px;
       opacity: 0;
       animation: fadeIn 1.5s forwards;
     }
 
-    .intro-text {
+    .logo-wrap img {
+      display: block;
       width: 100%;
+      height: auto;
+    }
+
+    .dot {
+      position: absolute;
+      left: 65.006%;
+      top: 68.56%;
+      width: 4.6%;
+      aspect-ratio: 1;
+      transform: translate(-50%, -50%);
+      border-radius: 50%;
+      background: var(--accent);
+    }
+
+    .lead {
+      font-size: 1.3rem;
+      font-weight: 500;
       line-height: 1.5;
+      letter-spacing: 0;
+      margin: 0 0 1.6em;
+      color: #ece9ee;
+    }
+
+    .lead span {
+      display: block;
+    }
+
+    .lead span + span {
+      margin-top: 0.5em;
+    }
+
+    .intro-text p {
+      line-height: 1.7;
+      margin: 0 0 1.5em;
     }
 
     .intro-text ul {
       list-style: none;
       padding-left: 0;
-      margin-top: 20px;
+      margin: 36px 0 0;
     }
 
     .intro-text li {
-      margin-bottom: 6px;
+      margin-bottom: 18px;
+      line-height: 1.7;
+      position: relative;
+      padding-left: 1.2em;
     }
 
     .intro-text li::before {
-      content: "– ";
-      opacity: 0.7;
+      content: "–";
+      position: absolute;
+      left: 0;
+      color: var(--muted);
+    }
+
+    .external-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 3px;
+    }
+
+    .external-link svg {
+      width: 11px;
+      height: 11px;
+      opacity: 0.6;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      flex-shrink: 0;
     }
 
     .project-link {
@@ -109,24 +205,6 @@
       flex-shrink: 0;
     }
 
-    .external-link {
-      display: inline-flex;
-      align-items: center;
-      gap: 3px;
-    }
-
-    .external-link svg {
-      width: 11px;
-      height: 11px;
-      opacity: 0.55;
-      fill: none;
-      stroke: currentColor;
-      stroke-width: 2;
-      stroke-linecap: round;
-      stroke-linejoin: round;
-      flex-shrink: 0;
-    }
-
     dialog {
       border: none;
       padding: 0;
@@ -135,7 +213,7 @@
     }
 
     dialog::backdrop {
-      background: rgba(0, 0, 0, 0.85);
+      background: rgba(0, 0, 0, 0.88);
       backdrop-filter: blur(2px);
     }
 
@@ -153,16 +231,16 @@
 
     footer {
       flex-shrink: 0;
-      background-color: #1c1c1c;
-      color: #888;
-      padding: 12px 20px;
-      font-size: 0.9rem;
+      background-color: #151415;
+      color: var(--muted);
+      padding: 14px 20px;
+      font-size: 0.85rem;
       text-align: center;
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
       align-items: center;
-      gap: 8px;
+      gap: 6px 16px;
     }
 
     .social-icons {
@@ -173,25 +251,27 @@
     .social-icons svg {
       width: 20px;
       height: 20px;
-      fill: oklch(0.705 0.015 286.067);
+      fill: var(--muted);
       transition: fill 0.3s ease, transform 0.2s ease;
     }
 
-    .social-icons svg:hover {
-      fill: oklch(0.8 0.03 286.067);
+    .social-icons a:hover svg,
+    .social-icons a:focus-visible svg {
+      fill: var(--accent);
       transform: translateY(-1px);
     }
 
     @keyframes fadeIn {
-      to {
-        opacity: 1;
-      }
+      to { opacity: 1; }
     }
 
     @media (max-width: 600px) {
-      .logo {
-        width: 150px;
-      }
+      .logo-wrap { width: 150px; }
+      .lead { font-size: 1.15rem; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .logo-wrap { animation: none; opacity: 1; }
     }
   </style>
 </head>
@@ -202,17 +282,20 @@
 
   <main class="content">
 
-    <img class="logo" src="gfx/logo.svg" alt="gobo.ws logo" width="200" height="53">
+    <div class="logo-wrap">
+      <img src="gfx/logo.svg" alt="gobo.ws logo" width="200" height="53">
+      <span class="dot" id="dot" aria-hidden="true"></span>
+    </div>
 
     <div class="intro-text">
 
-      <p>
-        Started with a light organ and PAR38 lamps in homemade plywood boxes in the 90s. 
-        Now it's interactive light installations driven by sensors, APIs and code.
+      <p class="lead">
+        <span>Started with a light organ and PAR38 lamps in homemade plywood boxes in the 90s.</span>
+        <span>Now I build interactive light installations using sensors, APIs and code.</span>
       </p>
 
       <p>
-Based in Norrköping, Sweden. I'm a freelancer building custom DMX integrations with modern lighting systems and Node-RED flows that make it all respond in real time.
+        Based in Norrköping, Sweden. I work with lighting and technology, building custom DMX integrations, Node-RED flows and interactive systems that respond to data, people and their surroundings.
       </p>
 
       <ul>
@@ -231,7 +314,7 @@ Based in Norrköping, Sweden. I'm a freelancer building custom DMX integrations 
         </li>
 
         <li>
-         Built and installed an interactive light artwork for
+          Built and installed an interactive light artwork for
           <a href="gfx/Show_Me_Colours_Vinterljus_2025.jpg"
              id="vinterljus-link"
              class="project-link"
@@ -251,11 +334,10 @@ Based in Norrköping, Sweden. I'm a freelancer building custom DMX integrations 
 
   <footer>
 
-    <span>
-      &copy; 2026 gobo.ws · Johan Nilsson ·
-      <a href="mailto:jn@gobo.ws">jn@gobo.ws</a> ·
-      Registered for F‑tax
-    </span>
+    <span>&copy; 2026 gobo.ws</span>
+    <span>Johan Nilsson</span>
+    <a href="mailto:jn@gobo.ws">jn@gobo.ws</a>
+    <span>Registered for F‑tax</span>
 
     <div class="social-icons">
 
@@ -263,22 +345,18 @@ Based in Norrköping, Sweden. I'm a freelancer building custom DMX integrations 
          target="_blank"
          rel="noopener noreferrer"
          aria-label="GitHub">
-
         <svg viewBox="0 0 24 24">
           <path d="M12 0C5.37 0 0 5.37 0 12a12 12 0 008.21 11.38c.6.11.82-.26.82-.58 0-.28-.01-1.04-.02-2.04-3.34.72-4.04-1.61-4.04-1.61-.55-1.39-1.33-1.76-1.33-1.76-1.09-.74.08-.73.08-.73 1.21.08 1.84 1.24 1.84 1.24 1.07 1.83 2.81 1.3 3.49.99.11-.77.42-1.3.76-1.6-2.66-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.23-3.22 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 016 0c2.29-1.55 3.3-1.23 3.3-1.23.77.84 1.23 1.91 1.23 3.22 0 4.61-2.81 5.63-5.48 5.92.43.37.82 1.1.82 2.21 0 1.6-.01 2.88-.01 3.27 0 .32.22.69.82.58A12 12 0 0024 12c0-6.63-5.37-12-12-12z"/>
         </svg>
-
       </a>
 
       <a href="https://www.instagram.com/gobo_ws"
          target="_blank"
          rel="noopener noreferrer"
          aria-label="Instagram">
-
         <svg viewBox="0 0 24 24">
           <path d="M7.75 2h8.5A5.75 5.75 0 0122 7.75v8.5A5.75 5.75 0 0116.25 22h-8.5A5.75 5.75 0 012 16.25v-8.5A5.75 5.75 0 017.75 2zm0 1.5A4.25 4.25 0 003.5 7.75v8.5A4.25 4.25 0 007.75 20.5h8.5a4.25 4.25 0 004.25-4.25v-8.5A4.25 4.25 0 0016.25 3.5h-8.5zm8.75 2a1 1 0 110 2 1 1 0 010-2zm-4.25 1.5a5.25 5.25 0 110 10.5 5.25 5.25 0 010-10.5zm0 1.5a3.75 3.75 0 100 7.5 3.75 3.75 0 000-7.5z"/>
         </svg>
-
       </a>
 
     </div>
@@ -293,25 +371,59 @@ Based in Norrköping, Sweden. I'm a freelancer building custom DMX integrations 
 
 <script>
   const dialog = document.getElementById('image-dialog');
-  const trigger = document.getElementById('vinterljus-link');
-
-  trigger.addEventListener('click', function (e) {
+  document.getElementById('vinterljus-link').addEventListener('click', e => {
     e.preventDefault();
     dialog.showModal();
   });
-
-  dialog.addEventListener('click', function (e) {
-    const rect = dialog.getBoundingClientRect();
-
-    if (
-      e.clientX < rect.left ||
-      e.clientX > rect.right ||
-      e.clientY < rect.top ||
-      e.clientY > rect.bottom
-    ) {
+  dialog.addEventListener('click', e => {
+    const r = dialog.getBoundingClientRect();
+    if (e.clientX < r.left || e.clientX > r.right || e.clientY < r.top || e.clientY > r.bottom) {
       dialog.close();
     }
   });
+
+  const root = document.documentElement;
+  const dot = document.getElementById('dot');
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // The dot steps through hues like a DMX fade: 60 steps, one every 0.5 s
+  let hue = 12;
+  if (!reduce) {
+    setInterval(() => {
+      hue = (hue + 6) % 360;
+      root.style.setProperty('--hue', hue);
+    }, 500);
+  }
+
+  // The spotlight starts in the dot and follows the pointer with a little lag
+  const home = () => {
+    const r = dot.getBoundingClientRect();
+    return [r.left + r.width / 2, r.top + r.height / 2];
+  };
+
+  let moved = false;
+  let [tx, ty] = home();
+  let x = tx, y = ty;
+
+  addEventListener('pointermove', e => {
+    moved = true;
+    tx = e.clientX;
+    ty = e.clientY;
+  });
+
+  const reset = () => { if (!moved) [tx, ty] = home(); };
+  addEventListener('resize', reset);
+  addEventListener('scroll', reset, { passive: true });
+  addEventListener('load', reset);
+
+  const ease = reduce ? 1 : 0.08;
+  (function loop() {
+    x += (tx - x) * ease;
+    y += (ty - y) * ease;
+    root.style.setProperty('--x', x.toFixed(1) + 'px');
+    root.style.setProperty('--y', y.toFixed(1) + 'px');
+    requestAnimationFrame(loop);
+  })();
 </script>
 
 </body>

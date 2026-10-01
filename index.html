@@ -26,7 +26,7 @@
       src: url("fonts/sora-latin-wght-normal.woff2") format("woff2");
       font-weight: 100 800;
       font-style: normal;
-      /* Ändrat från 'swap' till 'optional' för att eliminera CLS */
+      /* 'optional' eliminerar CLS (layoutskifte) vid laddning */
       font-display: optional;
     }
 
@@ -83,6 +83,11 @@
 
     a:focus-visible {
       outline: none;
+    }
+    
+    strong {
+      font-weight: 600;
+      color: #ece9ee; /* Något ljusare för att sticka ut mjukt */
     }
 
     .page-wrapper {
@@ -267,9 +272,12 @@
       to { opacity: 1; }
     }
 
+    /* Utökade marginaler på mobil för att undvika "wall of text" */
     @media (max-width: 600px) {
-      .logo-wrap { width: 150px; }
-      .lead { font-size: 1.15rem; }
+      .logo-wrap { width: 150px; margin-bottom: 48px; }
+      .lead { font-size: 1.15rem; margin-bottom: 2em; }
+      .intro-text p { margin-bottom: 1.8em; }
+      .intro-text li { margin-bottom: 24px; }
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -297,7 +305,7 @@
       </p>
 
       <p>
-        Based in Norrköping, Sweden. I work with lighting and technology, building custom DMX integrations, Node-RED flows and interactive systems that respond to data, people and their surroundings.
+        Based in Norrköping, Sweden. I build <strong>custom DMX integrations</strong>, <strong>Node-RED flows</strong>, and interactive systems that respond to data, people, and their surroundings.
       </p>
 
       <ul>

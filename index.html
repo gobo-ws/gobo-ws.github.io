@@ -17,7 +17,6 @@
   <link rel="canonical" href="https://gobo.ws/">
   <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2016%2016'%3E%3Ccircle%20cx='8'%20cy='8'%20r='7'%20fill='%23ff5a3c'/%3E%3C/svg%3E">
 
-  <!-- Förladdar typsnittet för att snabba upp LCP -->
   <link rel="preload" href="fonts/sora-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
 
   <style>
@@ -26,7 +25,7 @@
       src: url("fonts/sora-latin-wght-normal.woff2") format("woff2");
       font-weight: 100 800;
       font-style: normal;
-      /* 'optional' eliminerar CLS (layoutskifte) vid laddning */
+     
       font-display: optional;
     }
 
@@ -51,7 +50,6 @@
       font-size: 16px;
     }
 
-    /* Spotlight: darkens everything except a soft circle around the light */
     body::after {
       content: "";
       position: fixed;
@@ -87,7 +85,7 @@
     
     strong {
       font-weight: 600;
-      color: #ece9ee; /* Något ljusare för att sticka ut mjukt */
+      color: #ece9ee;
     }
 
     .page-wrapper {
@@ -109,7 +107,6 @@
       padding: 48px 20px;
     }
 
-    /* Logo with a live dot laid over the static one */
     .logo-wrap {
       position: relative;
       align-self: center;
@@ -272,7 +269,6 @@
       to { opacity: 1; }
     }
 
-    /* Utökade marginaler på mobil för att undvika "wall of text" */
     @media (max-width: 600px) {
       .logo-wrap { width: 150px; margin-bottom: 48px; }
       .lead { font-size: 1.15rem; margin-bottom: 2em; }
@@ -305,7 +301,7 @@
       </p>
 
       <p>
-        Based in Norrköping, Sweden. I build <strong>custom DMX integrations</strong>, <strong>Node-RED flows</strong>, and interactive systems that respond to data, people, and their surroundings.
+        Based in Norrköping, Sweden. I build <strong>custom DMX integrations</strong>, <strong>Node-RED flows</strong> and interactive systems that respond to data, people and their surroundings.
       </p>
 
       <ul>

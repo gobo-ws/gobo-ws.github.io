@@ -392,7 +392,6 @@
   const dot = document.getElementById('dot');
   const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  // The dot steps through hues like a DMX fade: 60 steps, one every 0.5 s
   let hue = 12;
   if (!reduce) {
     setInterval(() => {
@@ -401,7 +400,6 @@
     }, 500);
   }
 
-  // The spotlight starts in the dot and follows the pointer with a little lag
   const home = () => {
     const r = dot.getBoundingClientRect();
     return [r.left + r.width / 2, r.top + r.height / 2];
